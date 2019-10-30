@@ -13,10 +13,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // write code to handle getting data
-let overview = 'http:localhost:3000'; // Josh
-let reviews = 'http:localhost:3001'; // me
-let image = 'http:localhost:3002'; // Bryan
-let aboutGame = 'http:localhost:8081'; // Justin
+let overview = 'http://ec2-13-57-13-174.us-west-1.compute.amazonaws.com'; // Josh
+let reviews = 'http://ec2-52-53-170-110.us-west-1.compute.amazonaws.com:3001'; // me
+// let image = 'http:localhost:3002'; // Bryan
+let aboutGame = 'http://ec2-18-218-54-252.us-east-2.compute.amazonaws.com:8081'; // Justin
 // THIS DOESN'T EXIST !!! let topReviews = 'http:localhost:3004'; // I didn't set this (Stephen did)
 
 app.use('/api/:service', (req, res) => {
@@ -39,14 +39,14 @@ app.use('/api/:service', (req, res) => {
       .catch((err) => {
         console.log(`error in request for ${service}: ${err}`);
       })
-  } else if (service === 'image') {
-    axios.get(`${image}/1/bundle.js`)
-      .then((response) => {
-        res.send(response.data);
-      })
-      .catch((err) => {
-        console.log(`error in request for ${service}: ${err}`);
-      })
+  // } else if (service === 'image') {
+  //   axios.get(`${image}/1/bundle.js`)
+  //     .then((response) => {
+  //       res.send(response.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(`error in request for ${service}: ${err}`);
+  //     })
   } else if (service === 'aboutGame') {
     axios.get(`${aboutGame}/bundle.js`)
       .then((response) => {
